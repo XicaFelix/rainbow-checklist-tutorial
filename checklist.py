@@ -26,6 +26,7 @@ def select(function_code):
     if function_code == "C":
         input_item = user_input("Input item:")
         create(input_item)
+        return True
 
     # Read item
     elif function_code == "R":
@@ -33,14 +34,15 @@ def select(function_code):
 
         # Remember that item_index must actually exist or our program will crash.
         read(item_index)
-
+        return True
     # Print all items
     elif function_code == "P":
         list_all_items()
-
+        return True
     # Catch all
     else:
         print("Unknown Option")
+        return True
 
 def user_input(prompt):
     # the input function will display a message in the terminal
@@ -74,6 +76,12 @@ def test():
     print(user_value)
 
     test()
+
+running = True
+while running:
+    selection = user_input(
+        "Press C to add to list, R to Read from list, P to display list, and Q to quit")
+    running = select(selection)
 
 
 
